@@ -22,13 +22,25 @@ function App() {
     setList(updateStatusTask);
   }
 
+  const handleAddTask = (taskName: string) => {
+    const updateTaskList = [...list];
+    updateTaskList.push({
+      id: list.length + 1,
+      name: taskName,
+      done: false
+    });
+    setList(updateTaskList)
+  }
+
   return (
     <Styles.Container>
       <Styles.Area>
+
         <Styles.Header>
           Lista de Tarefas
-          <InputAddTask />
+          <InputAddTask onEnter={handleAddTask} />
         </Styles.Header>
+
         {list.map((tarefa, index) => (
             <ListItem
               tarefa={ tarefa }
@@ -36,6 +48,7 @@ function App() {
               onChange={handleTaskStatus}
             />
           ))}
+
       </Styles.Area>
     </Styles.Container>
   );
