@@ -1,5 +1,10 @@
-import express from 'express';
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
-app.listen(3001, () => console.log('Hello na port 3001'))
+app.use(express.json());
+app.use(cors());
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => console.log(`Hello na port ${port}`));
