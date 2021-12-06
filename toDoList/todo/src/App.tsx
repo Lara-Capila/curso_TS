@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as Styles from './App.styles';
 import InputAddTask from './components/InputAddTask';
 import ListItem from './components/ListIstem';
@@ -29,6 +29,14 @@ function App() {
     setList(updateTaskList)
   }
 
+  const handleDeleteTask = (id: number): void => {
+    setList(list.filter((task) => {
+      return task.id !== id
+    }));
+  }
+
+  
+
   return (
     <Styles.Container>
       <Styles.Area>
@@ -42,6 +50,7 @@ function App() {
               tarefa={ tarefa }
               key={ index }
               onChange={handleTaskStatus}
+              onDelete={handleDeleteTask}
             />
           )) : <NoTask />}
 
