@@ -23,5 +23,12 @@ export const Container = styled.div(({status}: Props) => (
       height: 18px;
       margin-right: 8px;
     }
+
+    .icon-delete {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      color: red;
+    }
   `
 ))

@@ -18,9 +18,9 @@ function ListItem({tarefa, onChange, onDelete}: Props) {
         checked={tarefa.done}
         onChange={e => onChange(tarefa.id, e.target.checked) } />
       <label>{tarefa.name}</label>
-      <button onClick={() => onDelete(tarefa.id)}>
-        <RiDeleteBinLine />
-      </button>
+      <div className="icon-delete">
+        <RiDeleteBinLine onClick={() => onDelete(tarefa.id)} />
+      </div>
     </Styled.Container>
   )
 }
