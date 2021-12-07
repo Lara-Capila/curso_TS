@@ -3,9 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'airbnb-base',
-  ],
+  extends: 'trybe-backend-typescript',
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 13,
@@ -15,6 +13,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    'no-console': 'off',
+    // 'no-console': 'off',
+    // '@typescript-eslint/indent': ['error', 2],
   },
 };
