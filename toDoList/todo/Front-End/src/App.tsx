@@ -2,14 +2,11 @@ import React from 'react';
 import * as Styles from './App.styles';
 import InputAddTask from './components/InputAddTask';
 import ListItem from './components/ListIstem';
+import NoTask from './components/NoTask';
 import { Item } from './types/Item';
 
 function App() {
-  const [list, setList] = React.useState<Item[]>([{
-    id: 1,
-    name: 'comprar',
-    done: false,
-  }]);
+  const [list, setList] = React.useState<Item[]>([]);
 
   const handleTaskStatus = (id: number, done: boolean): void => {
     const updateStatusTask = [...list];
@@ -32,6 +29,14 @@ function App() {
     setList(updateTaskList)
   }
 
+  const handleDeleteTask = (id: number): void => {
+    setList(list.filter((task) => {
+      return task.id !== id
+    }));
+  }
+
+  
+
   return (
     <Styles.Container>
       <Styles.Area>
@@ -40,14 +45,14 @@ function App() {
           Lista de Tarefas
           <InputAddTask onEnter={handleAddTask} />
         </Styles.Header>
-
-        {list.map((tarefa, index) => (
+        {list[0] ? list.map((tarefa, index) => (
             <ListItem
               tarefa={ tarefa }
               key={ index }
               onChange={handleTaskStatus}
+              onDelete={handleDeleteTask}
             />
-          ))}
+          )) : <NoTask />}
 
       </Styles.Area>
     </Styles.Container>
